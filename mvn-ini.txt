@@ -1,0 +1,3 @@
+mvn archetype:generate -DgroupId=edu.escuelaing.arep -DartifactId=App -DarchetypeArtifactId=maven-archetype-quickstart 
+
+mvn exec:java -Dexec.mainClass="edu.escuelaing.arep.App"
