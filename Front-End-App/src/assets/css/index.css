@@ -1,0 +1,37 @@
+html {
+    min-height: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: linear-gradient(
+        -225deg,
+        #be7d51 0%,
+        #f7e600b9 52%,
+        rgb(245, 108, 108) 100%
+    );
+    min-height: 100%;
+    padding-bottom: 5rem;
+    color: #fff;
+}
+
+form {
+    display: flex;
+    width: 25%;
+    background-color: #fff;
+    align-content: center;
+    background-color: rgb(138, 49, 49);
+    border-radius: 10px;
+    padding: 50px;
+    margin: 0 auto;
+}
+
+input {
+    height: 20px;
+    margin: 10px 0;
+}
+
+.container {
+    text-align: center;
+}
