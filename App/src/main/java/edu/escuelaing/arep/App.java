@@ -1,5 +1,10 @@
 package edu.escuelaing.arep;
 
+import edu.escuelaing.arep.services.ConverterService;
+import edu.escuelaing.arep.services.impl.ConverterServiceImpl;
+import spark.Filter;
+import spark.Request;
+
 import static spark.Spark.*;
 
 /**
@@ -10,23 +15,38 @@ import static spark.Spark.*;
 public class App {
     private static String fahrenheitToCelciusPath = "/celsius/:fahrenheit";
     private static String celciusTofahrenheitPath = "/fahrenheit/:celsius";
+    private static ConverterService cSvcimpl = new ConverterServiceImpl();
 
-    protected static void setGetControllers() {
-        get(celciusTofahrenheitPath, (req, res) -> {
-            float celsius = Integer.parseInt(req.params(":celsius"));
-            return celsiusToFahrenheit(celsius);
-        });
+    protected static float validateInput(Request req, String param) {
+        String value = req.params(param);
+        boolean valid = cSvcimpl.isValidValue(value);
 
-        get(fahrenheitToCelciusPath, (req, res) -> {
-            float fahrenheit = Integer.parseInt(req.params(":fahrenheit"));
-            return fahrenheitToCelsius(fahrenheit);
-        });
+        if (!valid) return -1;
+        return Float.parseFloat(value);
+    }
+
+    protected static void setControllers() {
+        get(celciusTofahrenheitPath,"application/json" ,(req, res) -> cSvcimpl.celsiusToFahrenheit(validateInput(req, ":celsius")));
+        get(fahrenheitToCelciusPath,"application/json", (req, res) -> cSvcimpl.fahrenheitToCelsius(validateInput(req, ":fahrenheit")));
     }
 
     public static void main(String[] args) {
+        //Setting de portNumber
         port(getPort());
-        //Setting the Get Controllers of our API
-        setGetControllers();
+
+        //After-filters are evaluated after each request, and can read the request and read/modify the response:
+        //CORS
+        after((request, response) -> {
+            response.header("Access-Control-Allow-Origin", "*");
+            response.header("Access-Control-Allow-Methods", "GET");
+        });
+
+        //Our API is gonna be on the base path, /api/v1
+        path("/api/v1", () -> {
+            //Setting the  Controllers of our API
+            setControllers();
+        });
+
     }
 
     static int getPort() {
@@ -35,12 +55,6 @@ public class App {
         }
         return 4567; //returns default port if heroku-port isn't se  (i.e. on localhost)
     }
-
-    public static float celsiusToFahrenheit(float celsius) {
-        return (celsius * 1.8f) + 32;
-    }
-
-    public static float fahrenheitToCelsius(float fahrenheit) {
-        return (fahrenheit - 32) / 1.8f;
-    }
 }
+
+
