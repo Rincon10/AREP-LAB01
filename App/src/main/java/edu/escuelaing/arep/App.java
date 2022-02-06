@@ -17,7 +17,16 @@ public class App {
     private static String celciusTofahrenheitPath = "/fahrenheit/:celsius";
     private static ConverterService cSvcimpl = new ConverterServiceImpl();
 
-    protected static float validateInput(Request req, String param) throws Exception{
+
+    /**
+     * Method that validate if the request was built successfully
+     *
+     * @param req,   request of user
+     * @param param, param to know if convert celsius or fahrenheit
+     * @return float, that represents the convertion of the number(only with a valid input)
+     * @throws Exception, exception in case of an invalid input
+     */
+    protected static float validateInput(Request req, String param) throws Exception {
         String value = req.params(param);
         boolean valid = cSvcimpl.isValidValue(value);
 
@@ -25,11 +34,17 @@ public class App {
         return Float.parseFloat(value);
     }
 
+    /**
+     * Method that set the instances of the controllers of our API
+     */
     protected static void setControllers() {
-        get(celciusTofahrenheitPath,"application/json" ,(req, res) -> cSvcimpl.celsiusToFahrenheit(validateInput(req, ":celsius")));
-        get(fahrenheitToCelciusPath,"application/json", (req, res) -> cSvcimpl.fahrenheitToCelsius(validateInput(req, ":fahrenheit")));
+        get(celciusTofahrenheitPath, "application/json", (req, res) -> cSvcimpl.celsiusToFahrenheit(validateInput(req, ":celsius")));
+        get(fahrenheitToCelciusPath, "application/json", (req, res) -> cSvcimpl.fahrenheitToCelsius(validateInput(req, ":fahrenheit")));
     }
 
+    /**
+     * Main method, that start our Spark application
+     */
     public static void main(String[] args) {
         //Setting de portNumber
         port(getPort());
@@ -54,9 +69,12 @@ public class App {
         });
 
 
-
     }
 
+    /***
+     * Method that returns the port number to use in our App
+     * @return int, port number
+     */
     static int getPort() {
         if (System.getenv("PORT") != null) {
             return Integer.parseInt(System.getenv("PORT"));
