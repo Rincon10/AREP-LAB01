@@ -2,7 +2,7 @@ package edu.escuelaing.arep;
 
 import edu.escuelaing.arep.services.ConverterService;
 import edu.escuelaing.arep.services.impl.ConverterServiceImpl;
-import spark.Filter;
+import org.eclipse.jetty.http.HttpStatus;
 import spark.Request;
 
 import static spark.Spark.*;
@@ -17,11 +17,11 @@ public class App {
     private static String celciusTofahrenheitPath = "/fahrenheit/:celsius";
     private static ConverterService cSvcimpl = new ConverterServiceImpl();
 
-    protected static float validateInput(Request req, String param) {
+    protected static float validateInput(Request req, String param) throws Exception{
         String value = req.params(param);
         boolean valid = cSvcimpl.isValidValue(value);
 
-        if (!valid) return -1;
+        if (!valid) throw new Exception("You must enter a number");
         return Float.parseFloat(value);
     }
 
@@ -45,7 +45,15 @@ public class App {
         path("/api/v1", () -> {
             //Setting the  Controllers of our API
             setControllers();
+
+            //Using Exceptions
+            exception(Exception.class, (exception, request, response) -> {
+                response.status(HttpStatus.BAD_REQUEST_400);
+                response.body(cSvcimpl.transformToError(exception.getMessage()).toString());
+            });
         });
+
+
 
     }
 
