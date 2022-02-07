@@ -2,8 +2,11 @@ import { convertorApiClient } from './services/convertorApiClient.js';
 
 //========================Variables========================
 var formValues;
-const inputCelsius = document.getElementById('celsius');
-const inputFahrenheit = document.getElementById('fahrenheit');
+
+const inputCelsius = document?.getElementById('celsius');
+const inputFahrenheit = document?.getElementById('fahrenheit');
+const btnLimpiar = document?.getElementById('btn-limpiar');
+const btnDoc = document?.getElementById('btn-doc');
 
 const inputs = [
     ['celsius', inputCelsius],
@@ -39,9 +42,22 @@ const updateInput = (name, value) => {
 };
 
 const updateInputHTML = () => {
-    inputs.forEach(input => {
+    inputs?.forEach(input => {
         input[1].value = formValues[input[0]];
     });
+};
+
+const clearValues = () => {
+    formValues = { farenheit: '', celsius: '' };
+};
+
+const clearHTML = () => {
+    clearValues();
+    updateInputHTML();
+};
+
+export const redirect = page => {
+    window.location = `/public/${page}`;
 };
 
 //========================EventsListeners==================
@@ -50,12 +66,17 @@ setEventsListeners();
 
 // Function that set all the events of the DOM
 function setEventsListeners() {
-    document.addEventListener('DOMContentLoaded', () => {
-        formValues = { farenheit: '', celsius: '' };
-        updateInputHTML();
+    document?.addEventListener('DOMContentLoaded', () => {
+        clearHTML();
     });
 
-    inputCelsius.addEventListener('change', celsiusFunction);
+    btnLimpiar?.addEventListener('click', clearHTML);
 
-    inputFahrenheit.addEventListener('change', farenheitFunction);
+    btnDoc?.addEventListener('click', () => {
+        redirect('documentation.html');
+    });
+
+    inputCelsius?.addEventListener('change', celsiusFunction);
+
+    inputFahrenheit?.addEventListener('change', farenheitFunction);
 }

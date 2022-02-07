@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../src/assets/css/doc.css" />
+        <title>Lab01-Doc</title>
+    </head>
+    <body>
+        <div class="content">
+            <div>
+                <h2>API</h2>
+                <div class="topic">
+                    <p>
+                        Este es un API permite calcular valores de temperatura
+                        equivalentes a través de varias escalas de temperatura
+                        comúnmente utilizadas.Esta API posee unicamente
+                        <i>
+                            <b>2 endpoints</b>
+                        </i>
+                        , donde cada uno de ellos sirve para un propósito
+                        diferente cubriendo los diferentes casos de uso caso de
+                        uso.
+                    </p>
+                    <p>
+                        Los endpoints incluyen funcionalidades como recibir
+                        valores de las escalas Celsius y Fahrenheit,
+                        transformandolas respectivamente segun se necesite.
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <h3>URL Base</h3>
+                <div class="topic">
+                    <pre class="prettyprint white">
+https://calcapp-backend.herokuapp.com/api/v1
+                    </pre>
+                </div>
+            </div>
+            <div>
+                <h3>Respuesta API</h3>
+                <div class="topic">
+                    <p>
+                        Los datos se devuelven en un formato JSON estándar y se
+                        pueden volver a analizar fácilmente en cualquier
+                        lenguaje de programación.
+                    </p>
+
+                    <p>
+                        <b>Ejemplo de respuesta:</b> a continuación se mostrara
+                        un ejemplo de una respuesta de API que brinda
+                        información sobre la conversion realizada en una de las
+                        diferentes escalas, en esta respuesta encontraremos él
+                        código HTTP el cual nos dirá el estado de la petición,
+                        el valor transformado y por último la unidad a la cual
+                        se transformó.
+                    </p>
+                    <pre class="prettyprint white">
+    {
+        "status_code":200, 
+        "value": 1, 
+        "unit":"fahrenheit"
+    }</pre
+                    >
+                </div>
+            </div>
+            <div>
+                <h3>Endpoints disponibles</h3>
+                <div class="topic">
+                    <p>
+                        La API viene con una serie de endpoints donde cada uno
+                        de ellos proporciona una funcionalidad diferente.
+                    </p>
+                    <ul>
+                        <li>
+                            <p>
+                                <b
+                                    >endpoint para conversión fahrenheit a
+                                    celcius:
+                                </b>
+                                este endpoint devuelve la conversión en tiempo
+                                real de nuestros grados celsius a fahrenheit,
+                                para esto debemos de usar el siguiente path.
+                            </p>
+                            <h3>Solicitud API:</h3>
+                            <pre class="prettyprint white">
+https://calcapp-backend.herokuapp.com/api/v1/celsius/{fahrenheit}
+                            </pre>
+                            <h3>Parámetros de solicitud:</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <font>Parametro</font>
+                                        </th>
+                                        <th>
+                                            <font>Descripción</font>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>fahrenheit</code></td>
+                                        <td>
+                                            <font
+                                                >[obligatorio] Grados fahrenheit
+                                                que se convertiran en celsius.
+                                            </font>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+
+                        <li>
+                            <p>
+                                <b
+                                    >endpoint para conversión celcius a
+                                    fahrenheit:
+                                </b>
+
+                                este endpoint devuelve la conversión en tiempo
+                                real de nuestros grados fahrenheit a celsius,
+                                para esto debemos de usar el siguiente path.
+                            </p>
+                            <h3>Solicitud API:</h3>
+                            <pre class="prettyprint white">
+https://calcapp-backend.herokuapp.com/api/v1/fahrenheit/{celsius}
+                            </pre>
+                            <h3>Parámetros de solicitud:</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <font>Parametro</font>
+                                        </th>
+                                        <th>
+                                            <font>Descripción</font>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>celsius</code></td>
+                                        <td>
+                                            <font
+                                                >[obligatorio] Grados celsius
+                                                que se convertiran en
+                                                fahrenheit.
+                                            </font>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Control de acceso / CORS</h3>
+                    <div class="topic">
+                        <p>
+                            El uso compartido de recursos de origen cruzado
+                            (CORS) y los encabezados de control de acceso
+                            también son compatibles con la API de conversor de
+                            unidades. Esto le brinda la posibilidad de utilizar
+                            la API de tipos de cambio a través de solicitudes
+                            HTTP de origen cruzado
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h3>Errores potenciales</h3>
+                    <div class="topic">
+                        <p>
+                            Cuando enviamos solicitudes de API y esta llamada
+                            falla por algún motivo, se devuelve un error JSON.
+                        </p>
+                        <b>
+                            <p>Error de ejemplo:</p>
+                            <pre class="prettyprint white">
+{
+    "status_code":400, 
+    "value": -1, 
+    "unit":"none"
+}</pre
+                            >
+                        </b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="btn-container">
+            <button id="btn-volver">Volver</button>
+        </div>
+    </body>
+
+    <script type="module" src="../src/assets/js/doc.js"></script>
+</html>

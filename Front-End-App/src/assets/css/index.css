@@ -32,6 +32,26 @@ input {
     margin: 10px 0;
 }
 
-.container {
-    text-align: center;
+#btn-container {
+    display: flex;
+    width: fit-content;
+    margin: 10px auto;
+}
+
+#btn-container button {
+    background-color: rgb(10, 46, 46);
+    padding: 17px 15px;
+    width: auto;
+    height: 50px;
+    margin-left: 20px;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 700;
+    position: relative;
+}
+
+#container {
+    margin-top: 10%;
 }

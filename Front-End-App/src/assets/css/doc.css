@@ -1,0 +1,119 @@
+:root {
+    /* colors*/
+    --first-color: #3875be;
+    --code-color: #192738;
+}
+
+body {
+    font-family: Open Sans, Gill Sans MT, Gill Sans, Corbel, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+}
+
+#btn-container {
+    display: flex;
+    width: fit-content;
+    margin: 10px auto;
+}
+
+#btn-container button {
+    background-color: var(--first-color);
+    padding: 17px 15px;
+    width: auto;
+    height: 50px;
+    margin-left: 20px;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 700;
+    position: relative;
+}
+
+#container {
+    margin-top: 10%;
+}
+
+.content .topic pre {
+    padding: 15px;
+    width: 100%;
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    max-width: 100%;
+    position: relative;
+}
+
+.prettyprint {
+    font-family: Menlo, Bitstream Vera Sans Mono, DejaVu Sans Mono, Monaco,
+        Consolas, monospace;
+    border: 0 !important;
+}
+
+p {
+    margin: 0 0 10px;
+    margin-bottom: 15px;
+    text-align: justify;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+h2 {
+    font-size: 30px;
+    line-height: 40px;
+    background-color: var(--first-color);
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+pre {
+    overflow: auto;
+    background-color: var(--code-color);
+    padding: 15px 0 !important;
+}
+
+.content {
+    width: 860px;
+    margin: 0 auto;
+}
+
+.topic {
+    border: 1px solid #dde1e7;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 5px;
+}
+
+h3 {
+    line-height: normal;
+    color: var(--first-color);
+    font-weight: bold;
+    font-family: Promo, Helvetica, Arial, sans-serif;
+    font-size: 19px;
+}
+
+table,
+thead {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px #000 solid;
+    margin: 20px 0;
+}
+
+td {
+    padding: 10px;
+}
+
+code {
+    padding: 2px 4px;
+    margin: 20px;
+    font-size: 97%;
+    color: #c7254e;
+    white-space: nowrap;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
