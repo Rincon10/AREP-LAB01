@@ -1,3 +1,9 @@
+:root {
+    /* colors*/
+    --first-color: #3875be;
+    --code-color: #192738;
+}
+
 html {
     min-height: 100%;
 }
@@ -7,9 +13,9 @@ body {
     font-family: sans-serif;
     background-image: linear-gradient(
         -225deg,
-        #be7d51 0%,
-        #f7e600b9 52%,
-        rgb(245, 108, 108) 100%
+        #3875be 0%,
+        #fff 52%,
+        #192738 100%
     );
     min-height: 100%;
     padding-bottom: 5rem;
@@ -21,7 +27,7 @@ form {
     width: 25%;
     background-color: #fff;
     align-content: center;
-    background-color: rgb(138, 49, 49);
+    background-color: var(--code-color);
     border-radius: 10px;
     padding: 50px;
     margin: 0 auto;
@@ -39,7 +45,7 @@ input {
 }
 
 #btn-container button {
-    background-color: rgb(10, 46, 46);
+    background-color: var(--first-color);
     padding: 17px 15px;
     width: auto;
     height: 50px;
