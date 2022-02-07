@@ -39,7 +39,6 @@ const updateInput = (name, value) => {
 };
 
 const updateInputHTML = () => {
-    console.log(formValues);
     inputs.forEach(input => {
         input[1].value = formValues[input[0]];
     });
