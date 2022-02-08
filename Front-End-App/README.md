@@ -26,3 +26,7 @@ git clone https://github.com/Rincon10/AREP-LAB01
 ## **Despliegue en Heroku**
 
 [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://calcapp-frontend.herokuapp.com/public/index.html)
+
+## **Autor**
+
+-   [Iván Camilo](https://github.com/Rincon10).
