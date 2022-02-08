@@ -13,8 +13,8 @@ import java.io.IOException;
 public class ClientThread extends Thread {
     private IHttpConnectionService connectionService;
 
-    public ClientThread() {
-        this.connectionService = new HttpConnectionService();
+    public ClientThread( int number ) {
+        this.connectionService = new HttpConnectionService( number);
     }
 
     public ClientThread(IHttpConnectionService connectionService) {

@@ -18,11 +18,11 @@ import java.net.URL;
 public class HttpConnectionService implements IHttpConnectionService {
     private static final String USER_AGENT = "Mozilla/5.0";
     private static final String PATH = "https://calcapp-backend.herokuapp.com/api/v1/";
-    private static String endPoint;
-    private static URL url;
+    private  String endPoint;
+    private URL url;
 
-    public HttpConnectionService(){
-        this("fahrenheit/", 4);
+    public HttpConnectionService( int number ){
+        this("fahrenheit/", number);
     }
 
     public HttpConnectionService( String endPoint, int number){
@@ -41,8 +41,8 @@ public class HttpConnectionService implements IHttpConnectionService {
 
         //The following invocation perform the connection implicitly before getting the code
         int responseCode = con.getResponseCode();
-        System.out.println("*****************************************************************************");
-        System.out.println("GET Response Code :: " + responseCode+ "on petition" +url.getPath());
+//        System.out.println("*****************************************************************************");
+//        System.out.println("GET Response Code :: " + responseCode+ "on petition" +url.getPath());
 
         if (responseCode == HttpURLConnection.HTTP_OK) { // success
             System.out.println("starting GET petition on " + url.getPath());
@@ -61,13 +61,13 @@ public class HttpConnectionService implements IHttpConnectionService {
         } else {
             System.out.println("GET request not worked");
         }
-        System.out.println("GET DONE from url"+url.getPath());
-        System.out.println("*****************************************************************************");
+        System.out.println("GET DONE from url"+url.getPath()+"\n");
+//        System.out.println("*****************************************************************************");
     }
 
     public static void main(String[] args) {
         try {
-            new HttpConnectionService().startConnection();
+            new HttpConnectionService(4).startConnection();
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }

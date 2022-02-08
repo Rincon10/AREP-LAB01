@@ -2,6 +2,7 @@ package edu.escuelaing.arep;
 
 import edu.escuelaing.arep.services.ConverterService;
 import edu.escuelaing.arep.services.impl.ConverterServiceImpl;
+import edu.escuelaing.arep.services.impl.HttpConnectionService;
 import edu.escuelaing.arep.threads.ClientThread;
 import org.eclipse.jetty.http.HttpStatus;
 import spark.Request;
@@ -42,7 +43,14 @@ public class App {
     protected static void startConcurrentThreads() {
         int clients = 10;
         for (int i = 0; i < clients; i++) {
-            new ClientThread().start();
+            if ( i%2 == 0){
+                new ClientThread(i).start();
+            }
+            else {
+                new ClientThread(new HttpConnectionService("celsius/",i)).start();
+            }
+
+
         }
     }
 
