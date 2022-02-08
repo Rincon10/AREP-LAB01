@@ -2,6 +2,7 @@ package edu.escuelaing.arep;
 
 import edu.escuelaing.arep.services.ConverterService;
 import edu.escuelaing.arep.services.impl.ConverterServiceImpl;
+import edu.escuelaing.arep.threads.ClientThread;
 import org.eclipse.jetty.http.HttpStatus;
 import spark.Request;
 
@@ -32,6 +33,17 @@ public class App {
 
         if (!valid) throw new Exception("You must enter a number");
         return Float.parseFloat(value);
+    }
+    //*******************************setters*********************************************
+
+    /**
+     * Method that set the instances of the multipleClients of our API
+     */
+    protected static void startConcurrentThreads() {
+        int clients = 10;
+        for (int i = 0; i < clients; i++) {
+            new ClientThread().start();
+        }
     }
 
     /**
@@ -68,7 +80,7 @@ public class App {
             });
         });
 
-
+        startConcurrentThreads();
     }
 
     /***

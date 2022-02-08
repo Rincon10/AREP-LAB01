@@ -1,11 +1,13 @@
 package edu.escuelaing.arep.services.impl;
 
 import edu.escuelaing.arep.services.IHttpConnectionService;
+import org.eclipse.jetty.client.HttpConnection;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -15,22 +17,35 @@ import java.net.URL;
  */
 public class HttpConnectionService implements IHttpConnectionService {
     private static final String USER_AGENT = "Mozilla/5.0";
-    private static final String GET_URL = "https://calcapp-backend.herokuapp.com/api/v1/";
-    private static final String CELSIUS = "celsius/";
-    private static final String FAHRENHEIT = "fahrenheit/";
+    private static final String PATH = "https://calcapp-backend.herokuapp.com/api/v1/";
+    private static String endPoint;
+    private static URL url;
 
-    public static void main(String[] args) throws IOException {
+    public HttpConnectionService(){
+        this("fahrenheit/", 4);
+    }
 
-        URL obj = new URL(GET_URL+CELSIUS+"4");
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+    public HttpConnectionService( String endPoint, int number){
+        this.endPoint = endPoint;
+        try {
+            this.url = new URL(PATH+endPoint+number);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void startConnection() throws IOException {
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         con.setRequestProperty("User-Agent", USER_AGENT);
 
         //The following invocation perform the connection implicitly before getting the code
         int responseCode = con.getResponseCode();
-        System.out.println("GET Response Code :: " + responseCode);
+        System.out.println("*****************************************************************************");
+        System.out.println("GET Response Code :: " + responseCode+ "on petition" +url.getPath());
 
         if (responseCode == HttpURLConnection.HTTP_OK) { // success
+            System.out.println("starting GET petition on " + url.getPath());
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     con.getInputStream()));
             String inputLine;
@@ -46,7 +61,15 @@ public class HttpConnectionService implements IHttpConnectionService {
         } else {
             System.out.println("GET request not worked");
         }
-        System.out.println("GET DONE");
+        System.out.println("GET DONE from url"+url.getPath());
+        System.out.println("*****************************************************************************");
     }
 
+    public static void main(String[] args) {
+        try {
+            new HttpConnectionService().startConnection();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
 }
