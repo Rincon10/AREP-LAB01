@@ -34,6 +34,12 @@ mvn package
 mvn exec:java -Dexec.mainClass="edu.escuelaing.arep.App"
 ```
 
+<img src="https://github.com/Rincon10/AREP-LAB01/blob/main/resources/back/01-compiling.jpg" />
+
+<br />
+<img src="https://github.com/Rincon10/AREP-LAB01/blob/main/resources/back/02-localApp.jpg" />
+
+
 4. Generando la documentación del proyecto
 ```mvn
 mvn javadoc:javadoc
@@ -42,6 +48,10 @@ La documentación se generara en la ruta
 ```
 target/site/apidocs/index.html
 ```
+
+<img src="https://github.com/Rincon10/AREP-LAB01/blob/main/resources/back/03-javadoc.jpg" />
+
+<br />
 
 ### **Más información**
 para más información del API, revisar la [documentación](https://calcapp-frontend.herokuapp.com/public/documentation.html).

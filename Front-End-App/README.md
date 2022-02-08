@@ -18,6 +18,10 @@ git clone https://github.com/Rincon10/AREP-LAB01
 1. Bastara con ubicarnos  en la carpeta Front-End-App y dirigirnos a la carpeta /public/index.html, dando click en el archivo.
 2. En caso de tener el editor de código Visual Studio Code, se recomienda usar la extensión, para más información dar click [aquí](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
 
+<img src="https://github.com/Rincon10/AREP-LAB01/blob/main/resources/front/01-liveserver.jpg" />
+
+<img src="https://github.com/Rincon10/AREP-LAB01/blob/main/resources/front/02-liveserver.jpg" />
+
 
 ## **Construido con**
  -   [HTML && CSS]()
