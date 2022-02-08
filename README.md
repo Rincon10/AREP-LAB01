@@ -8,6 +8,17 @@ A continuación proporcionaremos  una serie de instrucciones que le permitirán 
 * [Back-End](https://github.com/Rincon10/AREP-LAB01/blob/main/App/README.md)
 * [Front-End](https://github.com/Rincon10/AREP-LAB01/blob/main/Front-End-App/README.md)
 
+## Diagrama de clases
+
+<img src="https://github.com/Rincon10/AREP-LAB01/blob/main/resources/back/04-DiagramaDeClases.png" />
+
+## Diagrama de componentes
+
+<img src="https://github.com/Rincon10/AREP-LAB01/blob/main/resources/back/05-DiagramaDeDespliegue.png" />
+
+## Diagrama de despliegue
+
+<img src="https://github.com/Rincon10/AREP-LAB01/blob/main/resources/back/06-DiagramaDeComponentes.png" />
 
 ## **Autor**
 
