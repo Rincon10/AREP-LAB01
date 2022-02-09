@@ -55,8 +55,15 @@ public class App {
      * Method that set the instances of the controllers of our API
      */
     protected static void setControllers() {
-        get(celciusTofahrenheitPath, "application/json", (req, res) -> cSvcimpl.celsiusToFahrenheit(validateInput(req, ":celsius")));
-        get(fahrenheitToCelciusPath, "application/json", (req, res) -> cSvcimpl.fahrenheitToCelsius(validateInput(req, ":fahrenheit")));
+        get(celciusTofahrenheitPath, (req, res) -> {
+            res.type("application/json");
+            return cSvcimpl.celsiusToFahrenheit(validateInput(req, ":celsius"));
+
+        });
+        get(fahrenheitToCelciusPath, (req, res) -> {
+            res.type("application/json");
+            return cSvcimpl.fahrenheitToCelsius(validateInput(req, ":fahrenheit"));
+        });
     }
 
     /**

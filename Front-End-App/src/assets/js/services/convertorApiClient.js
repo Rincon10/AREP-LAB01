@@ -3,19 +3,23 @@ export const convertorApiClient = (() => {
 
     return {
         convertToCelsius: async farenheit => {
-            return await fetch(`${urlAPI}/celsius/${farenheit}`).then(
-                response => {
-                    return response.json();
-                },
-            );
-        },
+            const response = await fetch(`${urlAPI}/celsius/${farenheit}`, {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+            });
+            return response.json();
+        }, 
 
         convertToFarenheit: async celsius => {
-            return await fetch(`${urlAPI}/fahrenheit/${celsius}`).then(
-                response => {
-                    return response.json();
-                },
-            );
+            const response = await fetch(`${urlAPI}/fahrenheit/${celsius}`, {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+            });
+            return response.json();
         },
     };
 })();
