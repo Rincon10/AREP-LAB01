@@ -66,6 +66,21 @@ mvn test
 
  En este taller tenemos dos casos de pruebamostrando la respectiva conversión  Celsius-Fahrenheit y viceversa.
 
+
+## **Pruebas Concurrentes**
+
+Para probar que el servicio soporta almenos 10 peticiones concurrentes, se coloco en la clase app un codigo que instancia multiples peticiones web a nuestro API desplegado en heroku por medio de una clase denominada [ClientThread](https://github.com/Rincon10/AREP-LAB01/blob/main/App/src/main/java/edu/escuelaing/arep/threads/ClientThread.java)
+
+<img src="https://github.com/Rincon10/AREP-LAB01/blob/main/resources/back/07-concurrentImpl.jpg" />
+
+<br />
+
+al momento de la ejecución del proyecto, como se explico  **Instrucciones de ejecución local**, en la terminal se mostrara que peticiones se realizaron y cuales se respondieron primero por nuestro API.
+
+<img src="https://github.com/Rincon10/AREP-LAB01/blob/main/resources/back/08-concurrentPetitions.jpg" />
+
+<br />
+
 ## **Construido con**
  -   [Spark](https://sparkjava.com/documentation#getting-started) - Framework Web
   -   [Maven](https://maven.apache.org/download.cgi) - Gestor de dependencias

@@ -43,14 +43,11 @@ public class App {
     protected static void startConcurrentThreads() {
         int clients = 10;
         for (int i = 0; i < clients; i++) {
-            if ( i%2 == 0){
+            if (i % 2 == 0) {
                 new ClientThread(i).start();
+            } else {
+                new ClientThread(new HttpConnectionService("celsius/", i)).start();
             }
-            else {
-                new ClientThread(new HttpConnectionService("celsius/",i)).start();
-            }
-
-
         }
     }
 
